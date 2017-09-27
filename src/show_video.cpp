@@ -7,12 +7,11 @@
 
 #include <opencv2/opencv.hpp>
 
-void show_video(cv::Mat frame,const std::string name, int x_size=712, int y_size=400,
-		int pos_x=0, int pos_y=0){
+void show_video(cv::Mat frame,const std::string name, int pos_x=-1, int pos_y=-1, int x_size=712, int y_size=400){
 
 	cv::namedWindow(name, cv::WINDOW_NORMAL);
 	cv::resizeWindow(name, x_size, y_size);
-	if(pos_x!=0 && pos_y!=0)
+	if(pos_x!=-1 && pos_y!=-1)
 		cv::moveWindow(name, pos_x, pos_y);
 	cv::imshow(name, frame);
 }
