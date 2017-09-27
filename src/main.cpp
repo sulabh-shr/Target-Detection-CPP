@@ -37,11 +37,11 @@ int main(int argc, char** argv){
 
 		std::cout<<WIN_X;
 		while(1){
-			cv::Mat frame;
+			cv::Mat frame, hls_filtered;
 			cap >> frame;
 
 			show_video(frame, "video", WIN_X, 0, WIN_X, WIN_Y);
-			filterHLS(frame, true);
+			filterHLS(frame, &hls_filtered, true);
 
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed
