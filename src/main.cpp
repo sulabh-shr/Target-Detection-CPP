@@ -9,8 +9,8 @@
 
 #include "show_video.hpp"
 #include "parameters.hpp"
-#include "detection.hpp"
 #include "preprocess.hpp"
+#include "detection/find_contours.hpp"
 
 void on_low_l_threshold(int, void *);
 void on_high_l_threshold(int, void *);
@@ -35,7 +35,6 @@ int main(int argc, char** argv){
 		cv::createTrackbar(TRACKBAR_LOW_L, WIN_TRACKBAR, &low_l, 255, on_low_l_threshold);
 		cv::createTrackbar(TRACKBAR_HIGH_L, WIN_TRACKBAR, &high_l, 255, on_high_l_threshold);
 
-		std::cout<<WIN_X;
 		while(1){
 			cv::Mat frame, hls_filtered;
 			cap >> frame;
@@ -43,6 +42,10 @@ int main(int argc, char** argv){
 			show_video(frame, "video", WIN_X, 0, WIN_X, WIN_Y);
 			filterHLS(frame, &hls_filtered, true);
 
+			Contours filtered_contours;
+			Hierarchy hierarchy;
+
+			findContours(frame, hls_filtered, &filtered_contours, hierarchy, true);
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed
 				break;

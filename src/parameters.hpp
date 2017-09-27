@@ -8,7 +8,7 @@
 #ifndef SRC_PARAMETERS_HPP_
 #define SRC_PARAMETERS_HPP_
 
-const int VIDEO_SOURCE_INPUT = 1;
+const int VIDEO_SOURCE_INPUT = 0;
 const int WIN_Y = 325;
 const int WIN_X = WIN_Y * 4/3;
 const int POS_X_OFFSET = int(WIN_X * 0.1);
@@ -27,7 +27,7 @@ const int l_thresh[] = {190, 255};
 const int RADII[] = {100, 150, 225, 350, 400, 575, 675};
 
 
-typedef std::vector<cv::Vec4i> Contours;
+typedef std::vector<std::vector<cv::Point> > Contours;
 typedef std::vector<cv::Vec4i> Hierarchy;
 
 
