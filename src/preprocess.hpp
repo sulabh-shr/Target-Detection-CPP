@@ -12,7 +12,7 @@
 #include "show_video.hpp"
 #include "parameters.hpp"
 
-void filterHLS(cv::Mat img, bool show=false);
+cv::Mat filterHLS(cv::Mat img, bool show=false);
 
 
 

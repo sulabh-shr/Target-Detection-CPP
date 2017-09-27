@@ -8,7 +8,7 @@
 #include "show_video.hpp"
 #include "parameters.hpp"
 
-void filterHLS(cv::Mat img, bool show=false){
+cv::Mat filterHLS(cv::Mat img, bool show=false){
 	// Getting threshold values from track bars
 	int l_threshold[2];
 	l_threshold[0] = cv::getTrackbarPos(TRACKBAR_LOW_L, WIN_TRACKBAR);
@@ -26,4 +26,5 @@ void filterHLS(cv::Mat img, bool show=false){
 		show_video(output, "HLS Filtered", 2*WIN_X, 0, WIN_X, WIN_Y);
 	}
 
+	return output;
 }
