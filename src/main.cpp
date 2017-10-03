@@ -23,10 +23,14 @@ int main(int argc, char** argv){
 	bool IMAGE = false;
 
 	if(!IMAGE){
-		cv::VideoCapture cap(VIDEO_SOURCE_INPUT);
+		cv::VideoCapture cap;
+		cap.open(VIDEO_SOURCE_INPUT);
 		// Checking if Camera is working or not
-		if(!cap.isOpened())
+		if(!cap.isOpened()){
+			std::cerr<<"UNABLE TO OPEN THE CAMERA";
 			return -1;
+		}
+
 
 		// Creating track bars
 		cv::namedWindow(WIN_TRACKBAR, cv::WINDOW_NORMAL);

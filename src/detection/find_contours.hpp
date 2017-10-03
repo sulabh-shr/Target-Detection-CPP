@@ -13,7 +13,7 @@
 typedef std::vector<std::vector<cv::Point> > Contours;
 typedef std::vector<cv::Vec4i> Hierarchy;
 
-void findContours(cv::Mat frame, cv::Mat binary_img, Contours* contours, Hierarchy hierarchy, bool show=false);
-
+void findContours(cv::Mat frame, cv::Mat binary_img, Contours* contours, Hierarchy hierarchy,
+		bool show=false, bool verbose=false);
 
 #endif /* SRC_DETECTION_FIND_CONTOURS_HPP_ */
