@@ -10,14 +10,14 @@
 #include "../show_video.hpp"
 
 
-void findContours(cv::Mat frame, cv::Mat binary_img, Contours* contours, Hierarchy hierarchy,
+void findContours(Contours* contours, Hierarchy* hierarchy, cv::Mat frame, cv::Mat binary_img,
 		bool show=false, bool verbose=false){
 
 	if(verbose){
 		// Finding all contours in the image
 		std::cout<<"\nFinding contours\n";
 		Contours temp_contours;
-		cv::findContours(binary_img, temp_contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_NONE, cv::Point(0, 0) );
+		cv::findContours(binary_img, temp_contours, *hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_NONE, cv::Point(0, 0) );
 		std::cout<<"Contours Found: "<<temp_contours.size()<<"\n";
 
 		// Checking if contours have minimum accepted number of points

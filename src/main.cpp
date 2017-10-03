@@ -49,7 +49,7 @@ int main(int argc, char** argv){
 			Contours filtered_contours;
 			Hierarchy hierarchy;
 
-			findContours(frame, hls_filtered, &filtered_contours, hierarchy, true);
+			findContours(&filtered_contours, &hierarchy, frame, hls_filtered, true, true);
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed
 				break;
