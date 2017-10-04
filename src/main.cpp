@@ -11,6 +11,8 @@
 #include "parameters.hpp"
 #include "preprocess.hpp"
 #include "detection/find_contours.hpp"
+#include "detection/circle_check.hpp"
+
 
 void on_low_l_threshold(int, void *);
 void on_high_l_threshold(int, void *);
@@ -50,6 +52,10 @@ int main(int argc, char** argv){
 			Hierarchy hierarchy;
 
 			findContours(&filtered_contours, &hierarchy, frame, hls_filtered, true, true);
+
+			std::vector<CircleDetails> circles_details;
+			checkCircle(&circles_details, filtered_contours, frame, ROUND_CHECK, true, true);
+
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed
 				break;
