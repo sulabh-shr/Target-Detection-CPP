@@ -7,8 +7,9 @@
 
 #ifndef SRC_PARAMETERS_HPP_
 #define SRC_PARAMETERS_HPP_
+#include<opencv2/opencv.hpp>
 
-const int VIDEO_SOURCE_INPUT = 1;
+const int VIDEO_SOURCE_INPUT = 0;
 const int WIN_Y = 325;
 const int WIN_X = WIN_Y * 4/3;
 const int POS_X_OFFSET = int(WIN_X * 0.1);
@@ -26,9 +27,18 @@ const std::string TRACKBAR_HIGH_L = "High L";
 const int l_thresh[] = {190, 255};
 const int RADII[] = {100, 150, 225, 350, 400, 575, 675};
 
-
-typedef std::vector<cv::Vec4i> Contours;
+typedef std::vector<cv::Point> Contour;
+typedef std::vector<Contour> Contours;
 typedef std::vector<cv::Vec4i> Hierarchy;
+typedef struct{
+	Contour contour;
+	double area;
+	double length;
+	double roundness;
+	cv::Moments moments;
+	int cx;
+	int cy;
+} CircleDetails;
 
 
 #endif /* SRC_PARAMETERS_HPP_ */

@@ -9,8 +9,10 @@
 
 #include "show_video.hpp"
 #include "parameters.hpp"
-#include "detection.hpp"
 #include "preprocess.hpp"
+#include "detection/find_contours.hpp"
+#include "detection/circle_check.hpp"
+
 
 void on_low_l_threshold(int, void *);
 void on_high_l_threshold(int, void *);
@@ -23,10 +25,14 @@ int main(int argc, char** argv){
 	bool IMAGE = false;
 
 	if(!IMAGE){
-		cv::VideoCapture cap(VIDEO_SOURCE_INPUT);
+		cv::VideoCapture cap;
+		cap.open(VIDEO_SOURCE_INPUT);
 		// Checking if Camera is working or not
-		if(!cap.isOpened())
+		if(!cap.isOpened()){
+			std::cerr<<"UNABLE TO OPEN THE CAMERA";
 			return -1;
+		}
+
 
 		// Creating track bars
 		cv::namedWindow(WIN_TRACKBAR, cv::WINDOW_NORMAL);
@@ -35,13 +41,20 @@ int main(int argc, char** argv){
 		cv::createTrackbar(TRACKBAR_LOW_L, WIN_TRACKBAR, &low_l, 255, on_low_l_threshold);
 		cv::createTrackbar(TRACKBAR_HIGH_L, WIN_TRACKBAR, &high_l, 255, on_high_l_threshold);
 
-		std::cout<<WIN_X;
 		while(1){
-			cv::Mat frame;
+			cv::Mat frame, hls_filtered;
 			cap >> frame;
 
 			show_video(frame, "video", WIN_X, 0, WIN_X, WIN_Y);
-			filterHLS(frame, true);
+			filterHLS(frame, &hls_filtered, true);
+
+			Contours filtered_contours;
+			Hierarchy hierarchy;
+
+			findContours(&filtered_contours, &hierarchy, frame, hls_filtered, true, true);
+
+			std::vector<CircleDetails> circles_details;
+			checkCircle(&circles_details, filtered_contours, frame, ROUND_CHECK, true, true);
 
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed
