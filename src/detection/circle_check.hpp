@@ -13,7 +13,8 @@
 #include<math.h>
 
 #include "../parameters.hpp"
-#include "../show_video.hpp"
+//#include "../show_video.hpp"
+#include "../utils/helper.hpp"
 
 void checkCircle(std::vector <CircleDetails> *output, Contours contours, const cv::Mat frame,
 		float round_check=ROUND_CHECK, bool show=false, bool verbose=false );

@@ -8,7 +8,7 @@
 #include<math.h>
 
 #include "../parameters.hpp"
-#include "../show_video.hpp"
+#include "../utils/helper.hpp"
 
 
 void checkCircle(std::vector <CircleDetails> *output, Contours contours, const cv::Mat frame,
@@ -80,7 +80,7 @@ void checkCircle(std::vector <CircleDetails> *output, Contours contours, const c
 		cv::Mat drawing_frame = frame.clone();
 		cv::Scalar color = cv::Scalar(255, 0, 0);
 		cv::drawContours(drawing_frame, circles, -1, color, 3, 8);
-		show_video(drawing_frame, "Circles found", WIN_X, WIN_Y, WIN_X, WIN_Y);
+		showVideo(drawing_frame, "Circles found", WIN_X, WIN_Y, WIN_X, WIN_Y);
 	}
 };
 

@@ -7,11 +7,12 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/videoio.hpp>
 
-#include "show_video.hpp"
+//#include "show_video.hpp"
 #include "parameters.hpp"
 #include "preprocess.hpp"
 #include "detection/find_contours.hpp"
 #include "detection/circle_check.hpp"
+#include "utils/helper.hpp"
 
 
 void on_low_l_threshold(int, void *);
@@ -45,7 +46,7 @@ int main(int argc, char** argv){
 			cv::Mat frame, hls_filtered;
 			cap >> frame;
 
-			show_video(frame, "video", WIN_X, 0, WIN_X, WIN_Y);
+			showVideo(frame, "video", WIN_X, 0, WIN_X, WIN_Y);
 			filterHLS(frame, &hls_filtered, true);
 
 			Contours filtered_contours;

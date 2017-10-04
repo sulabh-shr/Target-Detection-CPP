@@ -5,8 +5,9 @@
  *      Author: Sulabh Shrestha
  */
 #include <opencv2/opencv.hpp>
-#include "show_video.hpp"
 #include "parameters.hpp"
+#include "utils/helper.hpp"
+#include "utils/helper.hpp"
 
 void filterHLS(cv::Mat img, cv::Mat *out_img_ptr, bool show=false){
 	// Getting threshold values from track bars
@@ -23,6 +24,6 @@ void filterHLS(cv::Mat img, cv::Mat *out_img_ptr, bool show=false){
 	cv::inRange(hls[1], l_threshold[0], l_threshold[1], *out_img_ptr);
 
 	if(show){
-		show_video(*out_img_ptr, "HLS Filtered", 2*WIN_X, 0, WIN_X, WIN_Y);
+		showVideo(*out_img_ptr, "HLS Filtered", 2*WIN_X, 0, WIN_X, WIN_Y);
 	}
 }

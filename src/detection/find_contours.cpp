@@ -7,7 +7,7 @@
 
 #include <opencv2/opencv.hpp>
 #include "../parameters.hpp"
-#include "../show_video.hpp"
+#include "../utils/helper.hpp"
 
 
 void findContours(Contours* contours, Hierarchy* hierarchy,const cv::Mat frame, const cv::Mat binary_img,
@@ -46,7 +46,7 @@ void findContours(Contours* contours, Hierarchy* hierarchy,const cv::Mat frame, 
 		cv::Mat drawing_frame = frame.clone();
 		cv::Scalar color = cv::Scalar(255, 0, 0);
 		cv::drawContours(drawing_frame, *contours, -1, color, 3, 8);
-		show_video(drawing_frame, "Contours", 0, WIN_Y, WIN_X, WIN_Y);
+		showVideo(drawing_frame, "Contours", 0, WIN_Y, WIN_X, WIN_Y);
 
 	}
 }
