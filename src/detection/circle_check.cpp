@@ -72,8 +72,8 @@ void checkCircle(std::vector <CircleDetails> *output, Contours contours, const c
 				// Saving contours to draw
 				circles.push_back(contours[i]);
 			}
-
 		}
+		std::cout<<"Total circles found: "<<circles.size()<<std::endl;
 	}
 
 	if(show){
