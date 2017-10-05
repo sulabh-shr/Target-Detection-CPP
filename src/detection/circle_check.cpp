@@ -12,12 +12,12 @@
 
 
 void checkCircle(std::vector <CircleDetails> *output, Contours contours, const cv::Mat frame,
-		float round_check=ROUND_CHECK, bool show=false, bool verbose=false ){
+		float round_check=0.75, bool show=false, bool verbose=false ){
 
 	// Temporary variable for saving contours to draw
 	Contours circles;
 
-	if(!verbose){
+	if(not verbose){
 		// Iterating over each counter
 		for(int i = 0; i < int(contours.size()); i++){
 			CircleDetails details;

@@ -16,7 +16,7 @@
 #include "../show_video.hpp"
 
 void checkCircle(std::vector <CircleDetails> *output, Contours contours, const cv::Mat frame,
-		float round_check=ROUND_CHECK, bool show=false, bool verbose=false );
+		float round_check=0.75, bool show=false, bool verbose=false );
 
 
 
