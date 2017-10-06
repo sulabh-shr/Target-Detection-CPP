@@ -30,7 +30,8 @@ const int RADII[] = {100, 150, 225, 350, 400, 575, 675};
 typedef std::vector<cv::Point> Contour;
 typedef std::vector<Contour> Contours;
 typedef std::vector<cv::Vec4i> Hierarchy;
-typedef struct{
+
+struct CircleDetails{
 	Contour contour;
 	double area;
 	double length;
@@ -38,7 +39,16 @@ typedef struct{
 	cv::Moments moments;
 	int cx;
 	int cy;
-} CircleDetails;
+};
+
+struct Key{
+	friend bool operator < (const Key& lhs, const Key& rhs){
+		return (lhs.x < rhs.x) || (lhs.x == rhs.x && lhs.y < rhs.y);
+	}
+
+	int x;
+	int y;
+};
 
 
 
