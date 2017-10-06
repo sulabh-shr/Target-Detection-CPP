@@ -12,7 +12,7 @@
 #include "preprocess.hpp"
 #include "detection/find_contours.hpp"
 #include "detection/circle_check.hpp"
-
+#include "detection/circle_group.hpp"
 
 void on_low_l_threshold(int, void *);
 void on_high_l_threshold(int, void *);
@@ -56,6 +56,11 @@ int main(int argc, char** argv){
 			std::vector<CircleDetails> circles_details;
 			checkCircle(&circles_details, filtered_contours, frame, ROUND_CHECK, true, true);
 
+			if(circles_details.size() > 0){
+				Groups groups = groupCircles(circles_details, frame, GROUPING_DISTANCE, true, true);
+			}
+
+			// For stopping the video feed
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed
 				break;

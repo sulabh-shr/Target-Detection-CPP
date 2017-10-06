@@ -19,5 +19,4 @@ void checkCircle(std::vector <CircleDetails> *output, Contours contours, const c
 		float round_check=0.75, bool show=false, bool verbose=false );
 
 
-
 #endif /* SRC_DETECTION_CIRCLE_CHECK_HPP_ */

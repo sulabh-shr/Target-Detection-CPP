@@ -50,6 +50,8 @@ struct Key{
 	int y;
 };
 
+typedef std::map<Key, Contours> Groups;
+
 
 
 #endif /* SRC_PARAMETERS_HPP_ */
