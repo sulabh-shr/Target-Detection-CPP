@@ -2,7 +2,7 @@
  * find_contours.cpp
  *
  *  Created on: Sep 27, 2017
- *      Author: lt-134
+ *      Author: Sulabh Shrestha
  */
 
 #include <opencv2/opencv.hpp>
@@ -13,7 +13,7 @@
 void findContours(Contours* contours, Hierarchy* hierarchy,const cv::Mat frame, const cv::Mat binary_img,
 		bool show=false, bool verbose=false){
 
-	if(!verbose){
+	if(not verbose){
 		// Finding all contours in the image
 		Contours temp_contours;
 		cv::findContours(binary_img, temp_contours, *hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_NONE, cv::Point(0, 0) );

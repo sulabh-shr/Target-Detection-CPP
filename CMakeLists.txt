@@ -3,6 +3,8 @@ project( Target-Detection-CPP )
 find_package( OpenCV REQUIRED )
 include_directories(src)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 file(GLOB SOURCES "src/*.cpp" "src/*/*.cpp")
 
 add_executable( Target-Detection-Cpp ${SOURCES} )
