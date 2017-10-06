@@ -31,15 +31,15 @@ Groups groupCircles(std::vector<CircleDetails> circles_details, const cv::Mat fr
 	if(!verbose){
 		int a =6;
 	}else{
-		std::cout<<"\nGROUPING CIRCLES..........";
+		std::cout<<"\nGROUPING CIRCLES.........."<<std::endl;
 		for(int i = 1; i < circles_details.size(); i++){
 
 			bool found = false;
 			Key found_key;
 
 			for(It it = groups.begin(); it != groups.end(); it++){
-				if((it->first.x - circles_details[i].cx <= tolerance)
-						and (it->first.y - circles_details[i].cy <= tolerance )){
+				if((abs(it->first.x - circles_details[i].cx) <= tolerance)
+						and (abs(it->first.y - circles_details[i].cy) <= tolerance )){
 					found = true;
 					found_key = it->first;
 					break;
@@ -65,7 +65,7 @@ Groups groupCircles(std::vector<CircleDetails> circles_details, const cv::Mat fr
 		cv::Mat drawing_frame = frame.clone();
 		for(It it = groups.begin(); it != groups.end(); it++){
 			cv::RNG rng(12345);
-			cv::Scalar color = cv::Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+			cv::Scalar color = cv::Scalar(it->first.x%255, it->first.y%255, rng.uniform(0, 255));
 //			cv::Scalar color = cv::Scalar(0, 255, 0);
 			cv::drawContours(drawing_frame, groups[it->first], -1, color, 3, 8);
 		}

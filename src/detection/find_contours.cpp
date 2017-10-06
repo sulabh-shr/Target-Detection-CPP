@@ -2,7 +2,7 @@
  * find_contours.cpp
  *
  *  Created on: Sep 27, 2017
- *      Author: lt-134
+ *      Author: Sulabh Shrestha
  */
 
 #include <opencv2/opencv.hpp>

@@ -2,7 +2,7 @@
  * main.cpp
  *
  *  Created on: Sep 25, 2017
- *      Author: Sulabh Shrestha
+ *      Author: Sulabh Shrestha, Kshitiz Mandal
  */
 #include <opencv2/opencv.hpp>
 #include <opencv2/videoio.hpp>
@@ -60,6 +60,7 @@ int main(int argc, char** argv){
 				Groups groups = groupCircles(circles_details, frame, GROUPING_DISTANCE, true, true);
 			}
 
+			std::cout<<"\n###############################################"<<std::endl;
 			// For stopping the video feed
 			int key = cv::waitKey(1);
 			if(key == 27)	// Stop if 'Escape' key is pressed

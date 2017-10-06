@@ -2,7 +2,7 @@
  * circle_check.hpp
  *
  *  Created on: Oct 4, 2017
- *      Author: lt-134
+ *      Author: Sulabh Shrestha
  */
 
 #ifndef SRC_DETECTION_CIRCLE_CHECK_HPP_
